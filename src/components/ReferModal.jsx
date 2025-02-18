@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
 
 const verticals = ["Engineering", "Medical", "Business", "Arts", "Science"];
-const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = process.env.REACT_APP_API_URL;
 
 export default function ReferModal({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
@@ -112,13 +112,16 @@ export default function ReferModal({ isOpen, onClose }) {
       return;
     }
     try {
-    const response = await fetch(`${apiUrl}/api/v1/referral/earnprogram`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      `https://accredian-backend-task-4cwg.onrender.com/api/v1/referral/earnprogram`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     const data = await response.json();
 
